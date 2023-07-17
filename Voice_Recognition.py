@@ -4,7 +4,6 @@ import os
 import webbrowser
 import getpass
 
-
 # Initialize the speech recognizer
 r = sr.Recognizer()
 
@@ -18,7 +17,7 @@ def speak(text):
 
 # Define a function to handle voice commands
 def handle_command(command):
-    if "open destiny item manager" in command or "open manager" in command: 
+    if "open destiny item manager" in command or "open manager" in command:
         path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Destiny Item Manager.lnk"
         os.startfile(path)
         speak("Opening Destiny item manager.")
@@ -29,7 +28,7 @@ def handle_command(command):
         url = "https://chat.openai.com/chat/" + search_query
         webbrowser.get().open(url)
         speak(f"Here are the search results for {search_query}.")
-    elif "search google for" in command:
+    elif "search google" in command:
         # Extract the search query from the command
         search_query = command.replace("search google for", "")
         # Use the webbrowser module to perform a Google search
@@ -37,12 +36,12 @@ def handle_command(command):
         webbrowser.get().open(url)
         speak(f"Here are the search results for {search_query}.")
     elif "open destiny" in command:
-        # Runs Destiny 2 on command 
+        # Runs Destiny 2 on command
         path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Steam\Destiny 2.url"
         os.startfile(path)
         speak("Opening Destiny 2.")
     elif "open discord" in command:
-        # Runs Discord on command 
+        # Runs Discord on command
         path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord.lnk"
         os.startfile(path)
         speak("Opening Discord.")
@@ -51,16 +50,24 @@ def handle_command(command):
         path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Steam\Apex Legends.url"
         os.startfile(path)
         speak("opening apex")
-        #Opens spotify 
+        #Opens spotify
     elif "open spotify" in command:
-        path = r
-        
+        path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\spotify.lnk"
+        os.startfile(path)
+        speak("opening spotify")
+        #opens steelseries
+    elif "open steelseries" in command:
+        path = r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\SteelSeries\SteelSeries GG\SteelSeries GG.lnk"
+        os.startfile(path)
+        speak("opening steelseries")
+
     elif "stop" in command:
         stop()
     else:
         speak("Sorry, I didn't understand that command.")
 
-# Define a function to stop the program
+# Define a functstop
+# ion to stop the program
 def stop():
     speak("Stopping.")
     exit()
