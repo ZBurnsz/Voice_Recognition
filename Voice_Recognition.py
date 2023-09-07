@@ -4,34 +4,26 @@ import os
 import webbrowser
 import getpass
 
-# Initialize the speech recognizer
 r = sr.Recognizer()
 
-# Initialize the text-to-speech engine
 engine = pyttsx3.init()
 
-# Define a function to convert text to speech
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-# Define a function to handle voice commands
 def handle_command(command):
     if "open destiny item manager" in command or "open manager" in command:
         path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Destiny Item Manager.lnk"
         os.startfile(path)
         speak("Opening Destiny item manager.")
     elif "ai search" in command:
-        # Extract the search query from the command
         search_query = command.replace("ai search", "")
-        # Use the webbrowser module to perform a Google search
         url = "https://chat.openai.com/chat/" + search_query
         webbrowser.get().open(url)
         speak(f"Here are the search results for {search_query}.")
     elif "search google" in command:
-        # Extract the search query from the command
         search_query = command.replace("search google for", "")
-        # Use the webbrowser module to perform a Google search
         url = "https://www.google.com/search?q=" + search_query
         webbrowser.get().open(url)
         speak(f"Here are the search results for {search_query}.")
@@ -55,7 +47,7 @@ def handle_command(command):
         path = r"C:\Users\Zach\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\spotify.lnk"
         os.startfile(path)
         speak("opening spotify")
-        #opens steelseries
+        #opens steelseries engine 
     elif "open steelseries" in command:
         path = r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\SteelSeries\SteelSeries GG\SteelSeries GG.lnk"
         os.startfile(path)
@@ -74,7 +66,7 @@ def stop():
 
 # define the trigger phrase
 trigger_phrase = "assistant"
-# wait for trigger phrase
+
 while True:
     with sr.Microphone() as source:
         print("Listening for trigger phrase...")
@@ -102,7 +94,7 @@ while True:
     except sr.UnknownValueError:
         print("Could not understand audio")
 
-# Run on startup
+# Run on startup (this doesnt work unless its active in the actual path of the computer in use)
     USER_NAME = getpass.getuser()
     def add_to_startup(file_path=r"C:\Users\Zach\OneDrive\Desktop\Voice_Recognition\Voice_Recognition.py"):
         if file_path == r"C:\Users\Zach\OneDrive\Desktop\Voice_Recognition\Voice_Recognition.py":
